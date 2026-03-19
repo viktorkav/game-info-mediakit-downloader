@@ -1,0 +1,20 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+venv/
+.venv/
+env/
+
+build/
+dist/
+*.app
+*.spec
+
+favorites.json
+local_config.json
+debug_output.log
+
+*.zip
+ARC Raiders/
