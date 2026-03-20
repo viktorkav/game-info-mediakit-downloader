@@ -6,11 +6,10 @@ from PIL import Image
 from io import BytesIO
 import requests
 import os
-import subprocess
 
 from config import MissingIGDBCredentialsError, load_igdb_credentials
 from igdb_api import IGDBClient
-from utils import create_mediakit, get_high_res_url
+from utils import create_mediakit, get_high_res_url, reveal_in_file_manager
 from icon_manager import IconManager
 import webbrowser
 from datetime import datetime
@@ -548,7 +547,7 @@ class DetailsView(ctk.CTkFrame):
             
             p = create_mediakit(self.game_data, target, cb)
             self.after(0, lambda: self.status_lbl.configure(text="Complete!", text_color="green"))
-            subprocess.call(["open", "-R", p])
+            reveal_in_file_manager(p)
         except Exception as e:
             self.after(0, lambda: self.status_lbl.configure(text=str(e), text_color="red"))
         finally:
