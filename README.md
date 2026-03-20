@@ -1,6 +1,8 @@
 # Game Info Mediakit Downloader
 
-Game Info is a macOS desktop app built with Python and CustomTkinter for searching the IGDB catalog and downloading high-resolution game media kits.
+Game Info is a cross-platform desktop app built with Python and CustomTkinter for searching the IGDB catalog and downloading high-resolution game media kits.
+
+Tested on macOS, Windows 11, and Ubuntu 24.04.
 
 ## Features
 
@@ -14,6 +16,7 @@ Game Info is a macOS desktop app built with Python and CustomTkinter for searchi
 
 - Python 3.9+
 - An IGDB API client ID and client secret
+- Linux: `tkinter` system package (e.g. `sudo apt install python3-tk` on Debian/Ubuntu)
 
 ## Local configuration
 
@@ -28,6 +31,8 @@ Use one of these options:
 
 ## Run locally
 
+### macOS / Linux
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
@@ -35,7 +40,28 @@ pip install -r requirements.txt
 python3 GameInfo.py
 ```
 
-## Build the macOS app
+### Windows
+
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+python GameInfo.py
+```
+
+## Build a distributable app
+
+The cross-platform build script uses PyInstaller to package the application for the current platform:
+
+```bash
+python build.py
+```
+
+The output is placed in `dist/Game Info/` (or `dist/Game Info.app` on macOS).
+
+### Legacy macOS build
+
+The original macOS-only build script is still available:
 
 ```bash
 chmod +x build_app.sh
@@ -43,6 +69,10 @@ chmod +x build_app.sh
 ```
 
 The build script creates `dist/Game Info.app`.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.
 
 ## Repository notes
 

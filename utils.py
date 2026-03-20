@@ -1,4 +1,6 @@
 import os
+import subprocess
+import sys
 import requests
 import zipfile
 from datetime import datetime
@@ -12,6 +14,16 @@ def get_high_res_url(url):
     return url.replace("t_thumb", "t_original")
 
 import mimetypes
+
+
+def reveal_in_file_manager(path):
+    """Opens the system file manager and highlights the given file."""
+    if sys.platform == "darwin":
+        subprocess.call(["open", "-R", path])
+    elif sys.platform == "win32":
+        subprocess.call(["explorer", "/select,", os.path.normpath(path)])
+    else:
+        subprocess.call(["xdg-open", os.path.dirname(path)])
 
 def download_image(url, save_path_base):
     """Downloads an image and saves it with the correct extension."""
