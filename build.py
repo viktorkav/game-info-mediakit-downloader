@@ -5,6 +5,9 @@ Usage:
     python build.py
 
 Builds the application using PyInstaller for the current platform.
+
+Note: On Windows, run this from a local drive (e.g. C:\\). PyInstaller does not
+work reliably on network paths such as \\\\wsl.localhost.
 """
 
 import os
